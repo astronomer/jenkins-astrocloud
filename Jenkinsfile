@@ -9,8 +9,8 @@ pipeline {
        }
        steps {
          script {
-           brew install astronomer/cloud/astrocloud
-           astrocloud deploy $DEPLOYMENT_ID
+           sh "brew install astronomer/cloud/astrocloud"
+           sh "astrocloud deploy $DEPLOYMENT_ID"
          }
        }
      }
