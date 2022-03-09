@@ -9,10 +9,7 @@ pipeline {
        }
        steps {
          script {
-           sh 'test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"'
-           sh 'test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
-           sh 'test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile'
-           sh 'echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile'
+           sh '-c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
            sh "brew install astronomer/cloud/astrocloud"
            sh 'astrocloud version'
            sh "astrocloud deploy ${DEPLOYMENT_ID}"
