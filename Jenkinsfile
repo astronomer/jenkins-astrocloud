@@ -9,6 +9,7 @@ pipeline {
        }
        steps {
          script {
+           sh 'git config --system core.longpaths true'
            sh '"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
            sh 'test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)'
            sh 'test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'
