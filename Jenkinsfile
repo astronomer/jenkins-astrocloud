@@ -9,11 +9,8 @@ pipeline {
        }
        steps {
          script {
-           sh '"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
-           sh 'test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)'
-           sh 'test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'
-           sh 'test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile'
-           sh 'echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile'
+           sh 'curl https://goreleaserdev.blob.core.windows.net/goreleaser-test-container/releases/v1.3.0/cloud-cli_1.3.0_Linux_x86_64.tar.gz -o astrocloudcli.tar.gz'
+           sh 'tar xzf astrocloudcli.tar.gz'
            sh "brew install astronomer/cloud/astrocloud"
            sh "astrocloud deploy $DEPLOYMENT_ID"
          }
