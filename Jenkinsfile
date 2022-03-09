@@ -1,5 +1,9 @@
 pipeline {
  agent any
+  environment {
+    ASTRONOMER_KEY_ID = "${ASTRONOMER_KEY_ID}"
+    ASTRONOMER_KEY_SECRET = "${ASTRONOMER_KEY_SECRET}"
+}
    stages {
      stage('Deploy to Astronomer') {
        when {
