@@ -9,7 +9,7 @@ pipeline {
        }
        steps {
          script {
-           sh "chmod +x -R ${env.WORKSPACE}"
+           sh "sudo chown $USER /usr/local/bin/brew"
            sh '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
            sh "brew install astronomer/cloud/astrocloud"
            sh 'astrocloud version'
