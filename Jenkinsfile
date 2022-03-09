@@ -9,7 +9,7 @@ pipeline {
        }
        steps {
          script {
-           sh '-c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+           sh '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'
            sh "brew install astronomer/cloud/astrocloud"
            sh 'astrocloud version'
            sh "astrocloud deploy ${DEPLOYMENT_ID}"
