@@ -9,9 +9,11 @@ pipeline {
        }
        steps {
          script {
-           sh 'sudo apt-get install build-essential procps curl file git'
-           sh '-c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-           sh 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+           sh '-c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
+           sh 'test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)'
+           sh 'test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'
+           sh 'test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile'
+           sh 'echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile'
            sh "brew install astronomer/cloud/astrocloud"
            sh "astrocloud deploy $DEPLOYMENT_ID"
          }
