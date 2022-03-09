@@ -1,24 +1,25 @@
-pipeline {
- agent any
-   stages {
-     stage('Deploy to Astronomer') {
-       when {
-        expression {
-          return env.GIT_BRANCH == "origin/main"
-        }
-       }
-       steps {
-         script {
-           sh 'curl https://goreleaserdev.blob.core.windows.net/goreleaser-test-container/releases/v1.3.0/cloud-cli_1.3.0_Linux_x86_64.tar.gz -o astrocloudcli.tar.gz'
-           sh 'tar xzf astrocloudcli.tar.gz'
-           sh './astrocloud deploy ${DEPLOYMENT_ID} -f'
+{`pipeline {
+   agent any
+     stages {
+       stage('Deploy to Astronomer') {
+        when {
+         expression {
+           return env.GIT_BRANCH == "origin/main"
          }
-       }
-     }
-   }
- post {
-   always {
-     cleanWs()
+        }
+        steps {
+          script {
+            sh 'curl https://goreleaserdev.blob.core.windows.net/goreleaser-test-container/releases/${siteVariables.cliVersion}/cloud-cli_${siteVariables.cliVersion}_Linux_x86_64.tar.gz -o astrocloudcli.tar.gz'
+                sh 'tar xzf astrocloudcli.tar.gz'
+                sh "./astrocloud deploy ${siteVariables.deploymentid} -f"
+          }
+        }
+      }
+    }
+  post {
+    always {
+      cleanWs()
+    }
    }
  }
-}
+ `}
