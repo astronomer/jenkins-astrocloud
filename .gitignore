@@ -1,6 +1,3 @@
 .git
 .env
 airflow_settings.yaml
-README.md
-astrocloud
-astrocloudcli.tar.gz
