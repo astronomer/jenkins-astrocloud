@@ -1,7 +1,7 @@
 pipeline {
- agent any
-   stages {
-     stage('Deploy to Astronomer') {
+  agent any
+    stages {
+      stage('Deploy to Astronomer') {
        when {
         expression {
           return env.GIT_BRANCH == "origin/main"
@@ -20,5 +20,5 @@ pipeline {
    always {
      cleanWs()
    }
- }
+  }
 }
