@@ -11,7 +11,7 @@ pipeline {
          script {
                sh 'curl https://goreleaserdev.blob.core.windows.net/goreleaser-test-container/releases/v1.3.1/cloud-cli_1.3.1_Linux_x86_64.tar.gz -o astrocloudcli.tar.gz'
                sh 'tar xzf astrocloudcli.tar.gz'
-               sh './astrocloud deploy ${ASTRONOMER_DEPLOYMENT_ID} -f'
+               sh './astrocloud deploy ${DEPLOYMENT_ID} -f'
          }
        }
      }
