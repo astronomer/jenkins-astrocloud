@@ -13,7 +13,7 @@ pipeline {
            sh 'tar xzf astrocloudcli.tar.gz'
            sh 'git status'
            sh 'git diff'
-           sh './astrocloud deploy ${DEPLOYMENT_ID}'
+           sh './astrocloud deploy ${DEPLOYMENT_ID} -f'
          }
        }
      }
