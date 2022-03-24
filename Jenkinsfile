@@ -1,5 +1,3 @@
-## THIS ONE WORKS
-
 pipeline {
  agent any
    stages {
