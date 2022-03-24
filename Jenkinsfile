@@ -9,7 +9,7 @@ pipeline {
                sh './astrocloud dev parse'
        }
       }
-     },
+     }
       stage('Deploy to Astronomer') {
        when {
         expression {
